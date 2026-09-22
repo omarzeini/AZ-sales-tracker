@@ -22,8 +22,7 @@ html {
 body {
   min-height: 100vh;
   font-family: "Tajawal", sans-serif;
-  background: linear-gradient(180deg, #fffaf5 0%, #fefaf5 100%);
-  
+  background-color: white;
 }
 
 button {
@@ -72,7 +71,7 @@ main {
 
   padding-top: 40px;
 }
-
+/* 
 .grain-bg {
   position: absolute;
   inset: 0;
@@ -83,17 +82,7 @@ main {
   );
   background-size: 24px 24px;
   opacity: 0.8;
-}
-
-.hero-section,
-.story-section,
-.feature-grid,
-.mission-section {
-  position: relative;
-  z-index: 1;
-  width: 80%;
-  margin: 0 auto;
-}
+} */
 
 .hero-section {
   text-align: center;
@@ -124,7 +113,8 @@ main {
 }
 
 .story-section {
-  margin-top: 24px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .story-copy {
@@ -142,7 +132,7 @@ main {
 .story-copy p + p {
   margin-top: 18px;
 }
-
+/* 
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -208,7 +198,7 @@ main {
   margin-top: 18px;
   font-size: 1.08rem;
   line-height: 1.9;
-}
+} */
 
 footer {
   width: 100%;
@@ -227,7 +217,7 @@ footer {
       font-size: 0.9rem;
       line-height: 25px;
     }
-  }
+  } 
 
   & .right-container {
     & ul {
@@ -245,9 +235,14 @@ footer {
 }
 
 @media (max-width: 850px) {
-  .feature-grid {
-    grid-template-columns: 1fr;
+  .story-section {
+    width: 95%;
   }
+  .story-copy p {
+    line-height:normal;
+    font-size: 1.1rem;
+  }
+
 
   footer {
     flex-direction: column;
@@ -273,12 +268,5 @@ footer {
         font-size: 0.8rem;
       }
     }
-  }
-}
-
-@media (max-width: 640px) {
-  .mission-panel,
-  .story-copy {
-    padding: 24px 18px;
   }
 }
