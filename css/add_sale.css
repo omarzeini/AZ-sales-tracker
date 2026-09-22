@@ -925,16 +925,18 @@ body.dark_mode .phone-navigation {
   }
 
   .dateHistoryDiv {
-    width: 90%;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     margin-top: 1rem;
+   
 
     & .business-name {
       font-size: 1.3rem;
     }
+   
   }
 
   .newsale_container {
@@ -1038,6 +1040,10 @@ body.dark_mode .phone-navigation {
 
   aside {
     display: none;
+  }
+
+  main {
+    padding-bottom: 100px;
   }
 }
 

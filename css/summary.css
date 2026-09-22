@@ -415,6 +415,7 @@ main {
   flex-direction: column;
   gap: 20px;
   position: relative;
+  padding-bottom: 60px;
 }
 
 main h1,
@@ -704,7 +705,7 @@ body.dark_mode .phone-navigation {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 1rem;
-    padding-bottom: 20px;
+    padding-bottom: 100px;
   }
 
   .dateHistoryDiv {

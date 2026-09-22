@@ -844,6 +844,10 @@ body.dark_mode .phone-navigation {
     font-weight: 500;
   }
 
+  main {
+    padding-bottom: 100px;
+  }
+
   .total-sales-btn {
     padding-top: 7px;
   }
