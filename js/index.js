@@ -1,11 +1,12 @@
 const scrollEffectElements = document.querySelectorAll(
-  "#intersecting-effect-element",
+  ".intersecting-effect-element",
 );
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("isIntersecting");
+      observer.unobserve(entry.target);
     } else {
       entry.target.classList.remove("isIntersecting");
     }

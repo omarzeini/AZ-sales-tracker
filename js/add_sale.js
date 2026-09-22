@@ -179,7 +179,7 @@ fetchItems();
 addSaleBtn.onclick = async () => {
   try {
     addSaleBtn.disabled = true;
-    addSaleBtn.textContent = "Adding new sale...";
+    addSaleBtn.textContent = "Saving...";
     await addSale();
     await setTotalSalesCount(currentBusinessDayId);
   } catch (err) {
@@ -187,7 +187,7 @@ addSaleBtn.onclick = async () => {
     showNotif("Error proceeding to add sale. Please try again", failedSvg);
   } finally {
     addSaleBtn.disabled = false;
-    addSaleBtn.textContent = "Add Sale";
+    addSaleBtn.textContent = "Save";
   }
 };
 

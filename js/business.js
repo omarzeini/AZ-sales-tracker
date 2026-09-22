@@ -330,6 +330,14 @@ const renderProducts = async (query = "") => {
       throw productsError;
     }
 
+    if (!userProducts.length) {
+      const noProductText = document.createElement("p");
+      noProductText.className = "no-products-text";
+      noProductText.textContent = "You have no products to display";
+      document.getElementById("products-wrapper").append(noProductText);
+      return;
+    }
+
     const filtered = userProducts.filter((product) =>
       product.name.toLowerCase().includes(query.toLowerCase()),
     );
@@ -403,7 +411,7 @@ renderProducts();
 const addNewProduct = async (name, price, cost) => {
   const addBtn = document.getElementById("add-new-product-btn");
   try {
-    addBtn.textContent = "Adding...";
+    addBtn.textContent = "Saving...";
     addBtn.disabled = true;
     addBtn.style.opacity = "0.5";
 
@@ -427,7 +435,7 @@ const addNewProduct = async (name, price, cost) => {
     }
 
     showNotif("Product Added.", successSvg);
-    addBtn.textContent = "Add Product";
+    addBtn.textContent = "Save";
     addBtn.disabled = false;
     addBtn.style.opacity = "1";
     await renderProducts();
@@ -435,7 +443,7 @@ const addNewProduct = async (name, price, cost) => {
   } catch (err) {
     console.log("Error Adding new Product: ", err.message || err);
     showNotif(`Error Adding New Product: ${err.message || err} `, failedSvg);
-    addBtn.textContent = "Add Product";
+    addBtn.textContent = "Save";
     addBtn.disabled = false;
     addBtn.style.opacity = "1";
   }
@@ -545,6 +553,73 @@ const setTotalSalesCount = async (activeDayId) => {
       "Couldn't get today sales count, Try refreshing the page." + err.message,
       failedSvg,
     );
+  }
+};
+
+const startNewDay = async (today) => {
+  const { data, error } = await supabase
+    .from("business_days")
+    .insert([{ date_label: today }])
+    .select("id");
+
+  if (error) {
+    console.warn("Error starting new business day ");
+    showNotif("An error occured, Please refresh the page.", failedSvg);
+    return;
+  }
+
+  currentBusinessDayId = data[0].id;
+  showNotif("New business day started", infoSvg);
+};
+
+const closeDay = async (activeDayId) => {
+  const { data: sales, error } = await supabase
+    .from("sales")
+    .select("quantity, items(price)")
+    .eq("business_day_id", activeDayId);
+
+  if (error) {
+    console.log(
+      "Error fetching today sales, Refresh to try again., Error: ",
+      error,
+    );
+    showNotif("An error occured, Please refresh the page.", failedSvg);
+    return;
+  }
+
+  const totalRevenue = sales.reduce(
+    (sum, s) => sum + s.quantity * s.items.price,
+    0,
+  );
+  const totalItems = sales.reduce((sum, s) => sum + s.quantity, 0);
+
+  const today = new Date().toISOString().split("T")[0];
+
+  const { data, error: saveErr } = await supabase.from("daily_summary").insert([
+    {
+      business_day_id: activeDayId,
+      date: today,
+      total_revenue: totalRevenue,
+      total_items_sold: totalItems,
+    },
+  ]);
+
+  if (saveErr) {
+    console.log(
+      "Error saving today sales to the summary , Please Refresh, Error:",
+      saveErr,
+    );
+    showNotif("An error occured, Please refresh the page.", failedSvg);
+    return;
+  }
+
+  const { error: closingErr } = await supabase
+    .from("business_days")
+    .update([{ is_active: false, close_time: new Date().toISOString() }])
+    .eq("id", activeDayId);
+  if (closingErr) {
+    console.log(closingErr);
+    showNotif("An error occured, Please refresh teh page.", failedSvg);
   }
 };
 
