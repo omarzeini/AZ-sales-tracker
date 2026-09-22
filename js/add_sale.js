@@ -142,9 +142,16 @@ const choices = new Choices(selectList, {
 });
 
 const fetchItems = async () => {
+  const user = await getUser();
+
+  if (!user) {
+    return;
+  }
+
   const { data: items, error } = await supabase
     .from("items")
-    .select("id, name");
+    .select("id, name")
+    .eq("user_id", user.id);
 
   if (error) {
     console.log(error);
@@ -354,6 +361,7 @@ const addSale = async () => {
 
   if (itemErr) {
     showNotif("An error occured, Please refresh the page.", failedSvg);
+    return;
   }
   const total = itemObj.price * quantity;
 
@@ -564,6 +572,7 @@ const displayUserEmail = async () => {
       setTimeout(() => {
         window.location.href = "auth.html";
       }, 2000);
+      return;
     }
 
     return;
