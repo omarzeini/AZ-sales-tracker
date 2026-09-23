@@ -1,6 +1,5 @@
 import getUser from "./utils/getUser.js";
 import supabase from "./config.js";
-import products from "./sample-products.js";
 
 let currentBusinessDayId;
 let currentUserEmail;
