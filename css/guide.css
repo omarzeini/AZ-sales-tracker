@@ -129,7 +129,7 @@ main {
 }
 
 .intro-copy {
-  width: 80%;
+  width: 50%;
   margin-inline: auto;
   text-align: left;
   margin-top: 1rem;
@@ -186,6 +186,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin-top: 2rem;
   border: 1px solid var(--SECONDARY-COLOR);
   border-radius: 10px;
@@ -193,6 +194,7 @@ main {
   & p {
     color: gray;
     line-height: 25px;
+    text-align: center;
   }
 
   & a {

@@ -488,7 +488,7 @@ main {
   & img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
@@ -754,6 +754,15 @@ footer {
     }
   }
 
+  .bottom-text {
+    font-size: 1.5rem !important;
+  }
+
+  .bottom-section {
+    & button {
+      width: fit-content !important;
+    }
+  }
   
  .desktop-view-figure {
     display: none;
@@ -786,13 +795,6 @@ footer {
     height: 60px;
   }
 
-  .desktop-view-figure {
-    display: none;
-  }
-
-  .mobile-view-figure {
-    display: block;
-  }
 }
 
 @media (max-width: 800px) {
