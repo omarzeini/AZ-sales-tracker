@@ -1,0 +1,1 @@
+import{n as e}from"./modulepreload-polyfill-D3Tm_XB5.js";import{n as t,t as n}from"./config-BdaNtURP.js";var r,i=e((()=>{n(),r=async()=>{let{data:{user:e},error:n}=await t.auth.getUser();return n?(console.log(`error getting user: `,n.message),null):e}}));export{i as n,r as t};

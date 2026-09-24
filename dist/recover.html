@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-X49G52GBFZ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-X49G52GBFZ");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recover</title>
+    <link rel="icon" href="/assets/logo_outline_svg-DeJW40aK.svg" />
+    <script type="module" crossorigin src="/assets/recover-YMYTFC0o.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-D3Tm_XB5.js">
+    <link rel="modulepreload" crossorigin href="/assets/config-BdaNtURP.js">
+    <link rel="stylesheet" crossorigin href="/assets/recover-C_GTtA4-.css">
+  </head>
+  <body>
+    <header>
+      <h2>Recover Your Password</h2>
+    </header>
+    <main>
+      <h4>You will recieve an email to reset your password</h4>
+      <form id="emailForm">
+        <label for="email">Enter your email</label>
+        <input
+          id="email-input"
+          type="email"
+          placeholder="example@gmail.com"
+          required
+        />
+
+        <div id="notifContainer" class="notif_container">
+          <div id="svgContainer" class="svg_container"></div>
+
+          <p id="notifText" class="notif_text"></p>
+
+          <div id="progress_bar" class="progress"></div>
+        </div>
+
+        <button id="send-button">Send</button>
+      </form>
+    </main>
+  </body>
+</html>

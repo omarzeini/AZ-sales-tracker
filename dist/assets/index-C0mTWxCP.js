@@ -1,0 +1,1 @@
+import{t as e}from"./modulepreload-polyfill-D3Tm_XB5.js";e((()=>{var e=document.querySelectorAll(`.intersecting-effect-element`),t=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting?(e.target.classList.add(`isIntersecting`),t.unobserve(e.target)):e.target.classList.remove(`isIntersecting`)})});e.forEach(e=>t.observe(e))}))();
